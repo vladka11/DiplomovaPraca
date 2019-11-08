@@ -1,0 +1,32 @@
+body, html {
+    background-image: linear-gradient(to bottom right, rgb(38,120 , 130), rgb(51, 172, 179));
+    background-repeat:no-repeat;
+    background-size: cover;
+    height: 100%;
+    color:rgb(56,56,56);
+    font-family: "Lucida Grande", "Palatino Linotype";
+}
+
+.container{
+    padding-top: 5%;
+}
+
+.panel-heading{
+    font-size: 200%;
+}
+
+.vertical_line {
+    border-left: 6px solid green;
+    height: 500px;
+}
+
+.btn{
+    background-color: #0f6674;
+    width: 100%;
+    color: whitesmoke;
+}
+
+#error-message{
+    color: #ff2b1d;
+    font-weight: bold;
+}
