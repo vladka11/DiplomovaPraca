@@ -21,7 +21,7 @@ include ("loginForm.php");
             $_SESSION['logged_id']= $id_studenta;
             $_SESSION['login']= $dbusername;
             ?>
-            <script>window.location.replace("http://localhost:8080/DiplomovaPraca/Home/homeTest.php");</script>
+            <script>window.location = "../Home/content.php";</script>
             <?php
         } else{
             ?>

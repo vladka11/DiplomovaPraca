@@ -49,7 +49,7 @@
                         </div>
                         <div class="form-group text-right">
                             <p>Ešte namáte vytvorený účet? </p>
-                            <p style="color: #0c5460; font-weight: bold"> Registrácia </p>
+                            <p style="color: #0c5460; font-weight: bold" onclick="document.location.href='registrationForm.php'"> Registrácia </p>
                         </div>
                     </form>
 
@@ -59,8 +59,8 @@
                 <div class="panel-body">
                     <img src="logoof.png" alt="University of Economics logo"  width="50%" height="50%">
                     <div class="row" >
-                        <div class="col-sm-6">Developed by the best najkrajsia <3 Vladislava Kopálová </div>
-                        <div class="col-sm-6">With Kultán</div>
+                        <div class="col-sm-6">Developed by: Vladislava Kopálová </div>
+                        <div class="col-sm-6">Led by: Ing. Jaroslav Kultan, PhD.</div>
                     </div>
 
                      </div>
