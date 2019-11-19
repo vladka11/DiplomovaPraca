@@ -1,8 +1,6 @@
 <?php
-include ("../database.php");
 include ("registrationForm.php");
-$db = new database();
-$db->pripoj();
+
 
 $submit = $_POST['submit'];
 

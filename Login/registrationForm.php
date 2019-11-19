@@ -1,3 +1,14 @@
+<?php
+include ("../database.php");
+$db = new database();
+$db->pripoj();
+
+
+// Fetch all the schools
+$query = "SELECT * FROM Skola";
+$result = $db->posliPoziadavku($query);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,11 +51,28 @@
                         <input type="email" name ="email" class="form-control" placeholder="E-mail">
                     </div>
 
+                    <legend>Údaje o škole</legend>
+
+                    <!-- School dropdown -->
                     <div class="form-group">
-                        <input type="text" name ="skola"  id="skola" class="form-control" placeholder="Škola">
+                    <select class="form-control" id="sel1">
+                        <option value="">Vyber školu</option>
+                        <?php
+                        if($result->num_rows > 0){
+                            while($row = $result->fetch_assoc()){
+                                echo '<option type="text" class="form-control" name="'.$row['id_skoly'].'">'.$row['nazov_skoly'].'</option>';
+                            }
+                        }
+                        ?>
+                    </select>
+
+
+
+
+
+
                     </div>
 
-                    <legend>Údaje o škole</legend>
                     <div class="form-group">
                         <input type="text" name="fakulta"  id="fakulta" class="form-control" placeholder="Fakulta">
                     </div>
