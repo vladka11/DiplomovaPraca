@@ -1,4 +1,5 @@
 <?php
+
 include ("../database.php");
 $db = new database();
 $db->pripoj();
@@ -10,12 +11,14 @@ $result = $db->posliPoziadavku($query);
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="registrationDesign.css?version=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
 
 </head>
 <body>
@@ -52,27 +55,34 @@ $result = $db->posliPoziadavku($query);
                     </div>
 
                     <legend>Údaje o škole</legend>
-
                     <!-- School dropdown -->
                     <div class="form-group">
-                    <select class="form-control" id="sel1">
+                    <select class="form-control" id="school">
                         <option value="">Vyber školu</option>
                         <?php
                         if($result->num_rows > 0){
                             while($row = $result->fetch_assoc()){
-                                echo '<option type="text" class="form-control" name="'.$row['id_skoly'].'">'.$row['nazov_skoly'].'</option>';
+                                echo '<option type="text" class="form-control" value="'.$row['id_skoly'].'">'.$row['nazov_skoly'].'</option>';
                             }
                         }
                         ?>
                     </select>
-
-
-
-
-
-
                     </div>
 
+                        <!-- State dropdown -->
+                        <div class="form-group">
+                        <select class="form-control" id="faculty">
+                            <option value="">Vyber fakultu</option>
+                        </select>
+                        </div>
+
+
+                        <!-- City dropdown -->
+                        <div class="form-group">
+                        <select class="form-control" id="odborID">
+                            <option value="">Vyber odbor</option>
+                        </select>
+                        </div>
                     <div class="form-group">
                         <input type="text" name="fakulta"  id="fakulta" class="form-control" placeholder="Fakulta">
                     </div>
@@ -101,3 +111,42 @@ $result = $db->posliPoziadavku($query);
 
 
 </body>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#school').on('change', function(){
+            var countryID = $(this).val();
+            if(countryID){
+                $.ajax({
+                    type:'POST',
+                    url:'ajaxSelectBoxData.php',
+                    data:'country_id='+countryID,
+                    success:function(html){
+                        $('#faculty').html(html);
+                        $('#odbor').html('<option value="">Vyber najskôr fakul</option>');
+                    }
+                });
+            }else{
+                $('#fakulta').html('<option value="">Select country first</option>');
+                $('#odbor').html('<option value="">Select state first</option>');
+            }
+        });
+
+        $('#faculty').on('change', function(){
+            var stateID = $(this).val();
+            if(stateID){
+                $.ajax({
+                    type:'POST',
+                    url:'ajaxSelectBoxData.php',
+                    data:'state_id='+stateID,
+                    success:function(html){
+                        $('#odborID').html(html);
+                    }
+                });
+            }else{
+                $('#odborID').html('<option value="">Select state first</option>');
+            }
+        });
+    });
+</script>
+</html>
