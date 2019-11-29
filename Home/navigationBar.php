@@ -4,7 +4,6 @@ include("../database.php");
 $db = new database();
 $db->pripoj();
 ?>
-
 <!DOCTYPE html>
 <html>
 
@@ -21,6 +20,7 @@ $db->pripoj();
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="navBarDesign.css">
+    <link rel="stylesheet" href="contentDesign.css">
 
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
@@ -46,7 +46,7 @@ $db->pripoj();
             crossorigin="anonymous"></script>
 </head>
 <body>
-
+ 
 <div class="wrapper">
     <!-- Sidebar Holder -->
     <nav id="sidebar">
@@ -56,8 +56,8 @@ $db->pripoj();
 
         <ul class="list-unstyled components">
             <?php
-            $logged_id = $_SESSION["id_login"];
-            $udajeZDb = $db->posliPoziadavku("SELECT nazov_predmetu, id_predmetu FROM Predmet WHERE id_ucitela = '$logged_id' ORDER BY nazov_predmetu");
+            $logged_id = $_SESSION["logged_id"];
+            $udajeZDb = $db->posliPoziadavku("SELECT nazov_predmetu, id_predmetu FROM Predmet JOIN Vyucuje USING (id_predmetu) WHERE id_ucitela = '$logged_id' ORDER BY nazov_predmetu");
             $numrows = mysqli_num_rows($udajeZDb);
             if ($numrows != 0) {
                 while ($row = mysqli_fetch_assoc($udajeZDb)) {
@@ -78,7 +78,7 @@ $db->pripoj();
                                     ?>
                                     <li>
                                         <!-- Výpis tém k predmetom -->
-                                        <a class="lala"
+                                        <a class="temy"
                                            id="<?php echo $row2['id_temy'] . 'x' . $predmet_id ?>"><?php echo $row2['nazov_temy'] ?></a>
                                     </li>
                                     <?php
@@ -92,7 +92,16 @@ $db->pripoj();
                     <?php
                 }
             } ?>
+
+
+
         </ul>
+        <ul  class="navbar-nav align-items-end">
+            <li class="nav-item">
+                <a class="logout" id="logout">Odhlásiť sa </a>
+            </li>
+        </ul>
+
     </nav>
 
     <script type="text/javascript">
@@ -104,12 +113,19 @@ $db->pripoj();
         });
 
         $(document).ready(function () {
-            $(".lala").click(function (e) {
+            $(".temy").click(function (e) {
                 var id = $(this).attr('id');
                 document.cookie = "predmetTema= " + id;
                 window.location.replace("http://localhost:8080/DiplomovaPraca/Home/content.php");
             });
         });
+
+        $(document).ready(function () {
+            $(".logout").click(function (e) {
+                window.location = "../Login/logout.php";
+            });
+        });
+
     </script>
 </body>
 </html>

@@ -18,7 +18,7 @@ class database{
         $this->host="localhost";
         $this->pouzivatel="root";
         $this->heslo="";
-        $this->nazovDB="PrednaskovySystem";
+        $this->nazovDB="AdaptivnySystem";
     }
 
     public function pripoj()

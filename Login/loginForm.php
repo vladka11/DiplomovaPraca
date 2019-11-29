@@ -33,23 +33,30 @@
                                 <input type="password" class="form-control" id="pwd" placeholder="Zadaj heslo" name="pwd">
                             </div>
                         </div>
-                        <h6 id="error-message"></h6>
-                        <div class="form-group text-left">
-                            <div class="col-sm-offset-2 col-sm-10">
-                                <div class="checkbox">
-                                    <label><input type="checkbox" name="remember"> Zostať prihlásený</label>
-                                </div>
+                        <div id="radioButtons">
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio" value="student" checked>Študent
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio" value="ucitel">Učiteľ
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optradio" value="admin">Admin
+                            </label>
                             </div>
-                        </div>
-
+                        <p></p>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button type="submit" class="btn btn-default">Prihlásenie</button>
                             </div>
                         </div>
+                        <h6 id="error-message"></h6>
                         <div class="form-group text-right">
-                            <p>Ešte namáte vytvorený účet? </p>
-                            <p style="color: #0c5460; font-weight: bold" onclick="document.location.href='registrationForm.php'"> Registrácia </p>
+                            <p>Ešte nemáte vytvorený účet? </p>
+                            <div class="row">
+                                <div class="col-sm-6"><p style="color: #0c5460; font-weight: bold" onclick="document.location.href='../Registration/registrationFormTeacher.php'"> Registrácia zamestnanca </p></div>
+                               <div class="col-sm-6"><p style="color: #0c5460; font-weight: bold" onclick="document.location.href='../Registration/registrationFormStudent.php'"> Registrácia študenta </p></div>
+                            </div>
                         </div>
                     </form>
 

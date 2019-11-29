@@ -1,5 +1,5 @@
 <?php
-include ("registrationForm.php");
+include("registrationFormStudent.php");
 
 
 $submit = $_POST['submit'];
@@ -9,23 +9,20 @@ $heslo = strip_tags($_POST['heslo']);
 $meno = strip_tags($_POST['meno']);
 $priezvisko = strip_tags($_POST['priezvisko']);
 $email = strip_tags($_POST['email']);
-$skola = strip_tags($_POST['skola']);
-$fakulta = strip_tags($_POST['fakulta']);
 $odbor = strip_tags($_POST['odbor']);
 $kruzok = strip_tags($_POST['kruzok']);
 $rocnik = strip_tags($_POST['rocnik']);
-
-$kontrolaLoginu = $db->posliPoziadavku("SELECT login FROM Student WHERE login='$login'");
+$kontrolaLoginu = $db->posliPoziadavku("SELECT * FROM Ucitel, Student WHERE Ucitel.login = '$login' OR Student.login='$login'");
 $pocetVyskytov = mysqli_num_rows($kontrolaLoginu);
 
 if($submit) {
     if ($pocetVyskytov == 0) {
-        if ($login&$heslo&$meno&$priezvisko&$email&$skola&$fakulta&$odbor&$kruzok&$rocnik) {
+        if ($login&$heslo&$meno&$priezvisko&$email&$odbor&$kruzok&$rocnik) {
                 $heslo = md5($heslo);
-                $test = $db->posliPoziadavku("INSERT INTO Student(login,heslo,meno,priezvisko,email,kruzok,rocnik) VALUES ('$login','$heslo','$meno','$priezvisko','$email','$kruzok','$rocnik')");
+                $test = $db->posliPoziadavku("INSERT INTO Student(id_odboru,login,heslo,meno,priezvisko,email,kruzok,rocnik) VALUES ('$odbor','$login','$heslo','$meno','$priezvisko','$email','$kruzok','$rocnik')");
                 ?>
                 <script>
-                    window.location = "loginForm.php";
+                    window.location = "../Login/loginForm.php";
                 </script>
 
                 <?php

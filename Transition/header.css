@@ -1,0 +1,64 @@
+.container{
+    margin: 0 auto;
+}
+
+.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+    background-color: #255D80;
+}
+
+.content{
+    width: 40%;
+    margin: 5% 30% 0 30%;
+    color:white;
+    font-size: 250%;
+    vertical-align: center;
+}
+
+.page-header{
+    padding-left: 20%;
+    padding-right: 20%;
+    border-bottom: gray solid 1px;
+    font-size: 35px;
+    font-weight: 300;
+}
+
+.panel-body{
+    border: 2px white solid;
+    height: 90px;
+    box-shadow: none;
+    font-weight: 300;
+}
+
+.panel-body:hover{
+    cursor: pointer;
+    border: none;
+    letter-spacing: 1px;
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
+#text{
+    clear: none;
+    float:left;
+}
+@media (max-width: 768px) {
+    .page-header {
+        padding-left: 5%;
+        padding-right: 5%;
+        font-size: 20px;
+    }
+
+    #logo{
+        margin: 0 25% 0 25%;
+    }
+    .content{
+        width: 60%;
+        height: 30%;
+        margin: 5% 20% 0 20%;
+        font-size: 200%;
+
+    }
+}

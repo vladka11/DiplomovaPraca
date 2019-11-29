@@ -96,13 +96,13 @@ a, a:hover, a:focus {
 #sidebar ul li a:hover {
     color: #255D80;
     background: #fff;
+    cursor: pointer;
 }
 
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
     background: #008C95;
 }
-
 
 a[data-toggle="collapse"] {
     position: relative;

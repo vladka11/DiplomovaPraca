@@ -24,6 +24,7 @@ body, html {
     background-color: #0f6674;
     width: 100%;
     color: whitesmoke;
+    margin: 2%;
 }
 
 #error-message{

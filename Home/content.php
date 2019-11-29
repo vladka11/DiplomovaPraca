@@ -1,6 +1,9 @@
-<?PHP
+<?php
 include("navigationBar.php");
 $predmetAtema= (explode("x",$_COOKIE["predmetTema"]));
+if ($predmetAtema==" "){
+    $predmetAtema="Nazov predmetu x Nazov temy";
+}
 $id_predmetu= (int)$predmetAtema[0];
 $id_temy= (int)$predmetAtema[1];
 global $nazov_temy;
@@ -15,7 +18,7 @@ if ($numrows!= 0) {
 }
 ?>
 <!-- Page Content Holder -->
-<div id="content">
+<div id="content"">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button type="button" id="sidebarCollapse" class="navbar-btn">
             <span></span>
@@ -24,25 +27,22 @@ if ($numrows!= 0) {
         </button>
         <h4 id="nazovTemy"> <?php echo $nazov_predmetu ?>  :  <?php echo $nazov_temy ?></h4>
     </nav>
-
-    <h2>Collapsible Sidebar Using Bootstrap 4</h2>
+<div class="container">
+    <h3> Učebné materiály </h3>
+    <hr>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-    <div class="line"></div>
 
-    <h2>Lorem Ipsum Dolor</h2>
+    <h3>Priradené otázky</h3>
+    <hr>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 
-    <div class="line"></div>
 
-    <h2>Lorem Ipsum Dolor</h2>
+    <h3><span class="glyphicon glyphicon-play-circle"></span>  Spustenie testu</h3>
+    <hr>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-
-    <div class="line"></div>
-
-    <h3>Lorem Ipsum Dolor</h3>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
 </div>
 
 </div>
