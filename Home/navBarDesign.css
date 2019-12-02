@@ -64,6 +64,7 @@ a, a:hover, a:focus {
     color: #fff;
     transition: all 0.6s cubic-bezier(0.945, 0.020, 0.270, 0.665);
     transform-origin: bottom left;
+    position: relative;
 }
 
 #sidebar.active {
@@ -144,7 +145,18 @@ a.article, a.article:hover {
     color: #fff !important;
 }
 
-
+.btn{
+    background-color: #34B8C0;
+    width: 70%;
+    color: whitesmoke;
+    margin: 15%;
+    border: none;
+    border-radius: 0;
+    font-weight: 300;
+    font-size: 120%;
+    bottom: 10%;
+    position: absolute;
+}
 
 /* ---------------------------------------------------
     CONTENT STYLE
