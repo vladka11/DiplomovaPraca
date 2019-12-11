@@ -19,11 +19,18 @@ $db->pripoj();
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="navBarDesign.css?version4">
-    <link rel="stylesheet" href="contentDesign.css?version2">
+    <link rel="stylesheet" href="navBarDesign.css?version5">
+    <link rel="stylesheet" href="contentDesign.css?version9">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
+            integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+            crossorigin="anonymous"></script>
 </head>
 <body>
- 
+
 <div class="wrapper">
     <!-- Sidebar Holder -->
     <nav id="sidebar">
@@ -47,7 +54,7 @@ $db->pripoj();
                         <?php
                         $temyPredmetu = $db->posliPoziadavku("SELECT nazov_temy, id_temy FROM Tema WHERE id_predmetu= '$predmet_id' ");
                         $numrows2 = mysqli_num_rows($temyPredmetu);
-                        if ($numrows2 != 0) {
+                       // if ($numrows2 != 0) {
                             ?>
                             <ul class="collapse list-unstyled" id="<?php echo $predmet_id ?>">
                                 <?php
@@ -61,27 +68,53 @@ $db->pripoj();
                                     <?php
                                 }
                                 ?>
+
+                                <li onclick="pridajTemu(this.id)"  id='<?php echo $predmet_id ?>'>
+                                    <a  onclick='pridajTemu(this.id) id='<?php echo $predmet_id ?>'><span class="glyphicon glyphicon-plus-sign"></span> Pridaj novú tému</a>
+                                </li>
                             </ul>
                             <?php
                         }
                         ?>
                     </li>
                     <?php
-                }
+               // }
             } ?>
 
+            <li class="nav-item">
+                <a class="logout" id="logout"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj predmet</a>
+            </li>
+            <hr>
+
+            <li class="nav-item">
+                <a class="logout" id="logout">Všetky otázky</a>
+            </li>
+            <li class="nav-item">
+                <a class="logout" id="logout"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj otázku</a>
+            </li>
+            <hr>
+
+            <li class="nav-item">
+                <a class="logout" id="logout"> Študenti </a>
+            </li>
+            <hr>
             <li class="nav-item">
                 <a class="logout" id="logout"> Odhlásiť sa</a>
             </li>
 
-                <li class="nav-item align-items-end">
-                    <button type="submit" class="btn btn-default">Offline režim </button>
-                </li>
+            <li class="nav-item align-items-end">
+                <button type="submit" onclick="onlineRezim()" class="btn btn-default">Online režim </button>
+            </li>
         </ul>
     </nav>
 
 
     <script type="text/javascript">
+
+        function onlineRezim(){
+            window.location = "../Home/onlineContent.php";
+        }
+
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
@@ -93,7 +126,7 @@ $db->pripoj();
             $(".temy").click(function (e) {
                 var id = $(this).attr('id');
                 document.cookie = "predmetTema= " + id;
-                window.location.replace("http://localhost:8080/DiplomovaPraca/Home/content.php");
+                window.location.replace("http://localhost:8080/DiplomovaPraca/Home/offlineContent.php");
             });
         });
 

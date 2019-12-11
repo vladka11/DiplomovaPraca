@@ -38,7 +38,7 @@
                                 <input type="radio" name="optradio" value="student" checked>Študent
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="optradio" value="ucitel">Učiteľ
+                                <input type="radio" name="optradio" value="ucitel" id="ucitelRadio">Učiteľ
                             </label>
                             <label class="radio-inline">
                                 <input type="radio" name="optradio" value="admin">Admin
@@ -47,15 +47,15 @@
                         <p></p>
                         <div class="form-group">
                             <div class="col-sm-offset-2 col-sm-10">
-                                <button type="submit" class="btn btn-default">Prihlásenie</button>
+                                <button type="submit" class="btn btn-default" id="loginButton">Prihlásenie</button>
                             </div>
                         </div>
                         <h6 id="error-message"></h6>
                         <div class="form-group text-right">
                             <p>Ešte nemáte vytvorený účet? </p>
                             <div class="row">
-                                <div class="col-sm-6"><p style="color: #0c5460; font-weight: bold" onclick="document.location.href='../Registration/registrationFormTeacher.php'"> Registrácia zamestnanca </p></div>
-                               <div class="col-sm-6"><p style="color: #0c5460; font-weight: bold" onclick="document.location.href='../Registration/registrationFormStudent.php'"> Registrácia študenta </p></div>
+                                <div class="col-sm-6" id="registrationTeacher"><p style="color: #0c5460; font-weight: bold" onclick="document.location.href='../Registration/registrationFormTeacher.php'"> Registrácia zamestnanca </p></div>
+                               <div class="col-sm-6" id="registrationStudent"><p style="color: #0c5460; font-weight: bold" onclick="document.location.href='../Registration/registrationFormStudent.php'"> Registrácia študenta </p></div>
                             </div>
                         </div>
                     </form>

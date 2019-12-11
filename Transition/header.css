@@ -1,19 +1,70 @@
 .container{
     margin: 0 auto;
 }
-
+.button1, .button2{
+    border: none;
+    height: 100px;
+    transition: .2s ease-in-out;
+    outline: none;
+    font-family: Skia;
+    font-weight: 300;
+}
+.button1:hover, .button2:hover{
+    animation: btn 0.2s linear forwards;
+}
+.button1{
+    background-color: #6F90A4;
+    text-align: left;
+}
+.glyphicon{
+    position: relative;
+    top: 6px;
+}
+.button2{
+    background-color: #34B8C0;
+    text-align: right;
+}
+@keyframes btn {
+    from{
+    transform: scale(1);
+    }
+    to{
+    transform: scale(1.05);
+    letter-spacing: 1px;
+    }
+}
 .navbar {
     margin-bottom: 0;
     border-radius: 0;
     background-color: #255D80;
 }
 
+.col-md-3 {
+    margin: 0 !important ;
+    position: relative;
+    height: 20%;
+}
+
+.col-md-9{
+    padding-top: 30px;
+}
+
+#logo{
+    position: absolute;
+    height: 100%;
+    right: 0;
+}
 .content{
     width: 40%;
     margin: 5% 30% 0 30%;
     color:white;
     font-size: 250%;
     vertical-align: center;
+}
+.panel-default{
+    background: red;
+    display: flex;
+    flex-direction: column;
 }
 
 .page-header{
@@ -44,21 +95,46 @@
     clear: none;
     float:left;
 }
-@media (max-width: 768px) {
+@media (max-width: 560px) {
     .page-header {
         padding-left: 5%;
         padding-right: 5%;
         font-size: 20px;
     }
-
     #logo{
-        margin: 0 25% 0 25%;
+        width: 50%;
+        height: 50%;
+        position: relative;
     }
     .content{
         width: 60%;
         height: 30%;
-        margin: 5% 20% 0 20%;
+        margin: 15% 20% 0 20%;
         font-size: 200%;
+    }
+    .col-md-3{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .container{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .col-md-9{
+        position: relative;
+        text-align: center;
+        width: 100%;
+        padding-top: 0px;
+
+    }
+
+    .button1, .button2{
+        border: none;
+        height: 70px;
+        transition: .2s ease-in-out;
 
     }
 }
