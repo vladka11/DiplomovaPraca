@@ -35,24 +35,24 @@ $result = $db->posliPoziadavku($query);
                     <h6 id="sprava" style="color: red;"> </h6>
                     <legend>Prihlasovacie údaje</legend>
                     <div class="form-group">
-                        <input type="text" name ="login" class="form-control" placeholder="Prihlasovacie meno" value="meno">
+                        <input type="text" name ="login" class="form-control" placeholder="Prihlasovacie meno" >
                     </div>
 
                     <div class="form-group">
-                        <input type="password" name ="heslo" class="form-control" placeholder="Heslo" value="heslo">
+                        <input type="password" name ="heslo" class="form-control" placeholder="Heslo">
                     </div>
 
                     <legend>Osobné údaje</legend>
                     <div class="form-group">
-                        <input type="text" name ="meno" class="form-control" placeholder="Krstné meno" value="vladka">
+                        <input type="text" name ="meno" class="form-control" placeholder="Krstné meno">
                     </div>
 
                     <div class="form-group ">
-                        <input type="text" name ="priezvisko" class="form-control" placeholder="Priezvisko" value="kopalova">
+                        <input type="text" name ="priezvisko" class="form-control" placeholder="Priezvisko">
                     </div>
 
                     <div class="form-group">
-                        <input type="email" name ="email" class="form-control" placeholder="E-mail" value="vladka@ss.sk">
+                        <input type="email" name ="email" class="form-control" placeholder="E-mail">
                     </div>
 
                     <legend>Údaje o škole</legend>
@@ -85,15 +85,15 @@ $result = $db->posliPoziadavku($query);
                         </select>
                         </div>
                     <div class="form-group">
-                        <input type="text" name ="kruzok"  id="kruzok" class="form-control" placeholder="Krúžok" value="ASDF">
+                        <input type="text" name ="kruzok"  id="kruzok" class="form-control" placeholder="Krúžok">
                     </div>
 
                     <div class="form-group">
-                        <input type="text" name ="rocnik"  id="rocnik" class="form-control" placeholder="Ročník štúdia" value="2019">
+                        <input type="text" name ="rocnik"  id="rocnik" class="form-control" placeholder="Ročník štúdia">
                     </div>
                     <h6 id="error-message"></h6>
                             <div align="center">
-                                <button formmethod="post" type="submit" name="submit" class="btn btn-secondary" value="Registruj ma"    >Registracia</button>
+                                <button formmethod="post" type="submit" name="submit" class="btn btn-secondary" value="Registruj ma">Registracia</button>
                             </div>
                     </form>
             </div>

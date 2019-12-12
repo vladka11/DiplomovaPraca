@@ -1,0 +1,25 @@
+.modal-header, .close {
+    background-color: #0A7E8F;
+    color:white !important;
+    text-align: center;
+    font-size: 30px;
+}
+#titleModal{
+    font-size: 28px;
+    color: white;
+    text-align: left;
+}
+#emptyModal{
+    color: red;
+}
+
+.btnModal {
+    background-color: #0A7E8F;
+    color: white;
+    height: 35px;
+    display: block;
+}
+.btnModal:hover{
+    color: white;
+    background-color: #0A7E8F;
+}

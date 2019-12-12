@@ -41,7 +41,7 @@
                                 <input type="radio" name="optradio" value="ucitel" id="ucitelRadio">Učiteľ
                             </label>
                             <label class="radio-inline">
-                                <input type="radio" name="optradio" value="admin">Admin
+                                <input type="radio" name="optradio" value="admin" id="adminRadio">Admin
                             </label>
                             </div>
                         <p></p>

@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../database.php");
+include 'ModalTopic.php';
 $db = new database();
 $db->pripoj();
 ?>
@@ -21,7 +22,6 @@ $db->pripoj();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="navBarDesign.css?version5">
     <link rel="stylesheet" href="contentDesign.css?version9">
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
@@ -40,6 +40,7 @@ $db->pripoj();
 
         <ul class="list-unstyled components">
             <?php
+
             $logged_id = $_SESSION["logged_id"];
             $udajeZDb = $db->posliPoziadavku("SELECT nazov_predmetu, id_predmetu FROM Predmet JOIN Vyucuje USING (id_predmetu) WHERE id_ucitela = '$logged_id' ORDER BY nazov_predmetu");
             $numrows = mysqli_num_rows($udajeZDb);
@@ -69,8 +70,8 @@ $db->pripoj();
                                 }
                                 ?>
 
-                                <li onclick="pridajTemu(this.id)"  id='<?php echo $predmet_id ?>'>
-                                    <a  onclick='pridajTemu(this.id) id='<?php echo $predmet_id ?>'><span class="glyphicon glyphicon-plus-sign"></span> Pridaj novú tému</a>
+                                <li  onclick="pridajTemu(id)" id="<?php echo $predmet_id ?>" >
+                                    <a><span class="glyphicon glyphicon-plus-sign"></span> Pridaj novú tému</a>
                                 </li>
                             </ul>
                             <?php
@@ -111,6 +112,10 @@ $db->pripoj();
 
     <script type="text/javascript">
 
+
+        function pridajTemu(id){
+            document.getElementById('myModal').style.display='block';
+        }
         function onlineRezim(){
             window.location = "../Home/onlineContent.php";
         }
