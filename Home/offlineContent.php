@@ -66,8 +66,6 @@ if ($numrows != 0) {
 <script>
     $(document).ready(function () {
         var data = '<?php echo $id_predmetu;?>';
-        console.log("logujem data");
-        console.log(data);
         $.ajax({
             url: "http://localhost:8080/DiplomovaPraca/Home/questionData.php",
             data: {
@@ -93,7 +91,6 @@ if ($numrows != 0) {
                     }
                     document.getElementById("data").innerHTML += html;
                 } else {
-                    console.log("nie su tu žiadne datq");
                     document.getElementById("noData").innerHTML = "K vybranej téme nie su pridenené žiadne otázky. <br>";
                     document.getElementById("noData").innerHTML += "Pridajte otázku pomocou tlačidla +.";
                     document.getElementById("noData").style.paddingBottom = "20px";

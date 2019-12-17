@@ -1,7 +1,11 @@
 <?php
-session_start();
+if(session_id() == '') {
+    session_start();
+}
 include("../database.php");
-include 'ModalTopic.php';
+include 'modalTopic.php';
+include 'modalSubject.php';
+
 $db = new database();
 $db->pripoj();
 ?>
@@ -12,15 +16,14 @@ $db->pripoj();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
     <title>Online mode</title>
-
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="navBarDesign.css?version5">
+    <link href="modalDesign.css?version5" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="contentDesign.css?version9">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
@@ -83,7 +86,7 @@ $db->pripoj();
             } ?>
 
             <li class="nav-item">
-                <a class="logout" id="logout"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj predmet</a>
+                <a class="tex" id="addSubject" onclick="document.getElementById('modalSubject').style.display='block';"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj predmet</a>
             </li>
             <hr>
 
@@ -111,10 +114,9 @@ $db->pripoj();
 
 
     <script type="text/javascript">
-
-
         function pridajTemu(id){
             document.getElementById('myModal').style.display='block';
+            document.getElementById('predmetSelect').value=id;
         }
         function onlineRezim(){
             window.location = "../Home/onlineContent.php";

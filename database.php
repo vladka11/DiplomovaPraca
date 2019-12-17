@@ -11,6 +11,7 @@ class database{
     private $pouzivatel;
     private $heslo;
     private $nazovDB;
+    private $lastId;
 
     public function __construct()
     {
@@ -46,6 +47,7 @@ class database{
     {
         if ($this->spojenie != null) {
             $result = mysqli_query($this->spojenie, $sqlRetazec);
+            $this->lastId= mysqli_insert_id($this->spojenie);
             return $result;
 
 
@@ -53,6 +55,11 @@ class database{
         } else {
             return null;
         }
+    }
+
+    public function getLastId()
+    {
+        return $this->lastId;
     }
 }
 

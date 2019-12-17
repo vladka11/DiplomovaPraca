@@ -91,8 +91,6 @@ if ($numrows != 0) {
 <script>
     $(document).ready(function () {
         var data= '<?php echo $id_predmetu;?>';
-        console.log("logujem data");
-        console.log(data);
     $.ajax({
         url: "http://localhost:8080/DiplomovaPraca/Home/questionData.php",
         data: {
@@ -118,7 +116,6 @@ if ($numrows != 0) {
                 }
                 document.getElementById("data").innerHTML += html;
             } else {
-                console.log("nie su tu žiadne datq");
                 document.getElementById("noData").innerHTML = "K vybranej téme nie su pridenené žiadne otázky. <br>";
                 document.getElementById("noData").innerHTML += "Otázky je možné pridať v offline režime.";
                 document.getElementById("noData").style.paddingBottom = "20px";
@@ -186,8 +183,6 @@ if ($numrows != 0) {
             style += '.range {background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #fff ' + val + '%, #fff 100%)}';
             style += '.range input::-' + prefs[i] + '{background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #b2b2b2 ' + val + '%, #b2b2b2 100%)}';
         }
-        console.log("hodnota");
-        console.log(curVal);
         return style;
     }
 
