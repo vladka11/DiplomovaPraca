@@ -8,7 +8,7 @@
             <!-- Modal content-->
             <div class="modal-content">
                 <div class="modal-header">
-                    <p id="titleModal"><span class="glyphicon glyphicon-plus-sign"></span> Pridanie nového predmetu</p>
+                    <p id="titleModal"><span class="glyphicon glyphicon-plus-sign"></span>   Pridanie nového predmetu</p>
                     <button type="button" class="close" data-dismiss="modal" onclick="document.getElementById('modalSubject').style.display='none'; document.getElementById('emptyModal').style.display='none'" >&times;</button>
                 </div>
                 <div class="modal-body" style="padding:40px 40px;">

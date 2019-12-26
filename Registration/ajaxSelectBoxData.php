@@ -46,4 +46,18 @@ if(!empty($_POST["country_id"])){
         echo '<option value="">Katedry nie su dostupné</option>';
     }
 }
-?><?php
+if(!empty($_POST["id_predmetu"])) {
+    // Fetch state data based on the specific country
+    $query = "SELECT * FROM Tema WHERE id_predmetu = " . $_POST['id_predmetu'] . "";
+    $result = $db->posliPoziadavku($query);
+// Generate HTML of state options list
+    if ($result->num_rows > 0) {
+        echo '<option value="">Vyber tému</option>';
+        while ($row = $result->fetch_assoc()) {
+            echo '<option value="' . $row['id_temy'] . '">' . $row['nazov_temy'] . '</option>';
+        }
+    } else {
+        echo '<option value="">Témy nie su dostupné</option>';
+    }
+}
+?>

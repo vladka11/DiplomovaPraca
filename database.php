@@ -50,7 +50,6 @@ class database{
             $this->lastId= mysqli_insert_id($this->spojenie);
             return $result;
 
-
             //return $this->spojenie->query($sqlRetazec);
         } else {
             return null;

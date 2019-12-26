@@ -46,7 +46,12 @@ h3{
     font-weight: 300;
 }
 
+#addNewAnswer:hover{
+    cursor: pointer;
+    color:black;
+}
 /*  Table */
+
 
 td{
     height: 50px;

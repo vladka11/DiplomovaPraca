@@ -16,7 +16,7 @@ $db->pripoj();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Online mode</title>
+    <title>Offline mode</title>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
@@ -24,7 +24,7 @@ $db->pripoj();
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="navBarDesign.css?version5">
     <link href="modalDesign.css?version5" rel="stylesheet" type="text/css"/>
-    <link rel="stylesheet" href="contentDesign.css?version9">
+    <link rel="stylesheet" href="contentDesign.css?version12">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- Bootstrap JS -->
@@ -86,20 +86,20 @@ $db->pripoj();
             } ?>
 
             <li class="nav-item">
-                <a class="tex" id="addSubject" onclick="document.getElementById('modalSubject').style.display='block';"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj predmet</a>
+                <a class="text" id="addSubject" onclick="document.getElementById('modalSubject').style.display='block';"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj predmet</a>
             </li>
             <hr>
 
             <li class="nav-item">
-                <a class="logout" id="logout">Všetky otázky</a>
+                <a class="text" id="allQuestion">Všetky otázky</a>
             </li>
             <li class="nav-item">
-                <a class="logout" id="logout"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj otázku</a>
+                <a class="text" id="newQuestion" onclick="addNewQuestion()"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj otázku</a>
             </li>
             <hr>
 
             <li class="nav-item">
-                <a class="logout" id="logout"> Študenti </a>
+                <a class="text" id="logout"> Študenti </a>
             </li>
             <hr>
             <li class="nav-item">
@@ -114,6 +114,10 @@ $db->pripoj();
 
 
     <script type="text/javascript">
+        function addNewQuestion() {
+            window.location = "./newQuestionForm.php";
+        }
+
         function pridajTemu(id){
             document.getElementById('myModal').style.display='block';
             document.getElementById('predmetSelect').value=id;
