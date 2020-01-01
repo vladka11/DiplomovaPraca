@@ -1,6 +1,8 @@
 <?php
-include("offlineNavigationBar.php");
+$headerTitle = "Pridanie novej otázky";
 
+include("offlineNavigationBar.php");
+include ("header.php");
 $logged_id = $_SESSION["logged_id"];
 $query = "SELECT * FROM Predmet JOIN Vyucuje USING (id_predmetu) WHERE id_ucitela = '$logged_id '";
 $db = new database();
@@ -10,19 +12,6 @@ $result = $db->posliPoziadavku($query);
 ?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Nová otázka</title>    <meta charset="utf-8">
-</head>
-<body>
-<div id="content">
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <button type="button" id="sidebarCollapse" class="navbar-btn">
-        <span></span>
-        <span></span>
-        <span></span>
-    </button>
-    <h4 id="nazovTemy"> Pridanie novej otázky</h4>
-</nav>
 <div class="container">
     <form role="form" id="newQuestionForm">
         <div style="width: 45%">

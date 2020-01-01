@@ -85,7 +85,7 @@ $result = $db->posliPoziadavku($query);
                         </select>
                         </div>
                     <div class="form-group">
-                        <input type="text" name ="kruzok"  id="kruzok" class="form-control" placeholder="Krúžok">
+                        <input type= "text" name ="kruzok"  id="kruzok" class="form-control" placeholder="Krúžok">
                     </div>
 
                     <div class="form-group">

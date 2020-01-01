@@ -11,7 +11,6 @@ $db->pripoj();
 ?>
 <!DOCTYPE html>
 <html>
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,7 +21,7 @@ $db->pripoj();
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="navBarDesign.css?version5">
+    <link rel="stylesheet" href="navBarDesign.css?version6">
     <link href="modalDesign.css?version5" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="contentDesign.css?version12">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -91,7 +90,7 @@ $db->pripoj();
             <hr>
 
             <li class="nav-item">
-                <a class="text" id="allQuestion">Všetky otázky</a>
+                <a class="text" id="allQuestion" onclick="showAllQuestions()">Všetky otázky</a>
             </li>
             <li class="nav-item">
                 <a class="text" id="newQuestion" onclick="addNewQuestion()"> <span class="glyphicon glyphicon-plus-sign"></span>  Pridaj otázku</a>
@@ -116,6 +115,10 @@ $db->pripoj();
     <script type="text/javascript">
         function addNewQuestion() {
             window.location = "./newQuestionForm.php";
+        }
+
+        function showAllQuestions() {
+            window.location = "./allQuestionTable.php";
         }
 
         function pridajTemu(id){

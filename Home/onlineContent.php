@@ -1,6 +1,7 @@
 <?php
 include("onlineNavigationBar.php");
 
+
 $predmetAtema = (explode("x", $_COOKIE["predmetTema"]));
 if ($predmetAtema == " ") {
     $predmetAtema = "Nazov predmetu x Nazov temy";
