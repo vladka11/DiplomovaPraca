@@ -128,39 +128,6 @@ if ($numrows != 0) {
         }
      });
     });
-    //zobrazovanie otazok na dashboarde pomocou ajaxu
-    /*
-    var ajax = new XMLHttpRequest();
-    var method = "GET";
-    var url = "http://localhost:8080/DiplomovaPraca/Home/questionData.php";
-    ajax.open(method, url);
-    ajax.send();
-
-
-    ajax.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var data = JSON.parse(this.responseText);
-            console.log(data);
-
-            var html = "";
-            for (var a = 0; a < data.length; a++) {
-                var text = data[a].text_otazky;
-                var id_otazky = data[a].id_otazky;
-
-                html += "<tr>"
-                html += "<td class='text'>" + text + "</td>";
-                html += "<td align='center'> " + "<h3 class='start'><span style='display:none' onclick='spustiOtazku(this.id)' class='glyphicon glyphicon-play-circle' id='P " + id_otazky + "'></span></h3>" + "</td>";
-                html += "<td align='center'>" + "<h3 class='stop'><span style='color:gray;display:none' onclick='ukonciOtazku(this.id)' class='glyphicon glyphicon-stop' id='S " + id_otazky + "'></h3>" + "</td>";
-                html += "<td align='center'>" + "<h3 class='actualAnswers'><span style='color:gray;display:none' onclick='zobrazVysledky(this.id)' class='glyphicon glyphicon-list-alt' id='A " + id_otazky + "'></h3>" + "</td>";
-                html += "</tr>";
-            }
-            document.getElementById("data").innerHTML += html;
-
-        }
-    };
-    */
-
-
     //time slider
     var sheet = document.createElement('style'),
         $rangeInput = $('.range input'),

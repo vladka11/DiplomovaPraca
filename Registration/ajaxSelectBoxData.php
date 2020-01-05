@@ -3,8 +3,6 @@
 include("../database.php");
 $db = new database();
 $db->pripoj();
-$xxx = $_POST["country_id"];
-
 
 if(!empty($_POST["country_id"])){
     // Fetch state data based on the specific country

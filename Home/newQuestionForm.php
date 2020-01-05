@@ -103,7 +103,6 @@ $result = $db->posliPoziadavku($query);
                     }
                 );
                 var jsonString = JSON.stringify(answers);
-                alert(answers.length);
                 if((topic_id)&&(question_text)&&(weight)&&(answers.length>1)){
                     $.ajax({
                         type: 'POST',

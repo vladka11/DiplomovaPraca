@@ -1,6 +1,6 @@
-#all_question_table  {
-    width: 90%;
-    margin-left: 40px;
+#all_question_table, #all_students_table, #all_tests_table  {
+    width: 95%;
+    margin-left: 20px;
     align-content: center;
 }
 
@@ -8,7 +8,6 @@
     text-align: left;
     padding: 8px;
 }
-
 #all_question_table td{
     width: 20%;
 }
@@ -23,21 +22,38 @@
 
 #all_question_table tr:nth-child(even){background-color: #f2f2f2}
 
-#all_question_table th {
+#all_question_table th, #all_students_table th {
     background-color:#0A7E8F;
     color: white;
     height: 50px;
 }
-
 #text{
     display: none !important;
     color: white;
+}
+
+#all_students_table tr td{
+    width: auto !important;
+}
+
+#all_tests_table tr td {
+    width: auto;
+}
+
+#studentInput{
+    background-position: 10px 12px; /* Position the search icon */
+    background-repeat: no-repeat; /* Do not repeat the icon image */
+    width: 95%;
+    margin-left: 20px;
+    font-size: 16px; /* Increase font-size */
+    padding: 12px 20px 12px 40px; /* Add some padding */
+    border: 1px solid #ddd; /* Add a grey border */
+    margin-bottom: 12px; /* Add some space below the input */
 }
 /* Modal na editovanie otazky */
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */

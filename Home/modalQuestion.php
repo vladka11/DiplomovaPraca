@@ -17,7 +17,7 @@ if ($numrows != 0) {
 }
 ?>
 
-<div id="id01" class="modal">
+<div id="dataModal" class="modal fade">
   <span onclick="document.getElementById('id01').style.display='none'"
         class="close" title="Close Modal">&times;</span>
 

@@ -84,7 +84,7 @@ if ($numrows != 0) {
 
                         html += "<tr>"
                         html += "<td class='text'>" + text + "</td>";
-                        html += "<td class='text'>" + "Uprav  " + "</td>";
+                        html += "<td class='text edit_data' id='id_otazky'>" + "Uprav  " + "</td>";
                         html += "<td class='text'>" + "Zmaž" + "</td>";
                         html += "<td align='center'> " + "<h3 class='start'><span style='display:none' onclick='spustiOtazku(this.id)' class='glyphicon glyphicon-play-circle' id='P " + id_otazky + "'></span></h3>" + "</td>";
                         html += "</tr>";
@@ -102,7 +102,6 @@ if ($numrows != 0) {
             }
         });
     });
-
 
 </script>
 </body>

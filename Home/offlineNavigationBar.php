@@ -2,7 +2,7 @@
 if(session_id() == '') {
     session_start();
 }
-include("../database.php");
+include '../database.php';
 include 'modalTopic.php';
 include 'modalSubject.php';
 
@@ -21,11 +21,10 @@ $db->pripoj();
           integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <!-- Our Custom CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="navBarDesign.css?version6">
+    <link rel="stylesheet" href="navBarDesign.css?version8">
     <link href="modalDesign.css?version5" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="contentDesign.css?version12">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
     <!-- Bootstrap JS -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"
             integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
@@ -98,7 +97,7 @@ $db->pripoj();
             <hr>
 
             <li class="nav-item">
-                <a class="text" id="logout"> Študenti </a>
+                <a class="text" id="students" onclick="showAllStudents()"> Študenti </a>
             </li>
             <hr>
             <li class="nav-item">
@@ -119,6 +118,10 @@ $db->pripoj();
 
         function showAllQuestions() {
             window.location = "./allQuestionTable.php";
+        }
+
+        function showAllStudents() {
+            window.location = "allStudentsTable.php";
         }
 
         function pridajTemu(id){
