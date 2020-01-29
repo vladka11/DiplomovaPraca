@@ -3,7 +3,7 @@ if (session_id() == '') {
     session_start();
 }
 $headerTitle = "Zobrazenie všetkých otázok";
-$logged_id = $_SESSION["logged_id"];
+$logged_id = $_SESSION["userid"];
 include("offlineNavigationBar.php");
 include("header.php");
 
@@ -241,18 +241,12 @@ $all_questions = $db->posliPoziadavku("SELECT * FROM Otazka JOIN Tema USING (id_
 
         // Delete question
         $(document).on('click', '.delete_data', function () {
-            var req = new XMLHttpRequest();
-            req.open('GET', document.location, false);
-            req.send(null);
-            var headers = req.getAllResponseHeaders().toLowerCase();
-            alert(headers);
-
 
             var question_id = $(this).attr("id");
             $.ajax({
                 url: "deleteQuestionData.php",
                 method: "POST",
-                data: {question_id: 0},
+                data: {question_id: question_id},
                 success: function (data) {
                     alert("Otázka bola úspešne zmazaná");
                     window.location="allQuestionTable.php";

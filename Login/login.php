@@ -25,15 +25,33 @@ include ("loginForm.php");
         while($row = mysqli_fetch_assoc($udajeZDb)) {
             $dbusername = $row['login'];
             $dbpassword = $row['heslo'];
-            $id_ucitela = $row['id_ucitela'];
+
+            switch ($person) {
+                case 'student': $id_user = $row['id_studenta'];break;
+                case 'admin':
+                case 'ucitel': $id_user = $row['id_ucitela']; break;
+            }
         }
 
         if ($prihlasovacieMeno == $dbusername && $dbpassword == md5($heslo)){
-            $_SESSION['logged_id']= $id_ucitela;
+            $_SESSION['userid']= $id_user;
             $_SESSION['login']= $dbusername;
-            ?>
-            <script>window.location = "../Transition/transitionPage.php";</script>
-            <?php
+            switch ($person) {
+                case 'ucitel':
+                    ?>
+                    <script>window.location = "../Transition/transitionPage.php";</script>
+                <?php
+                    break;
+                case 'student':
+                    ?>
+                    <script>window.location = "../Student/homepage.php";</script>
+                    <?php
+                    break;
+                case 'admin':
+
+                    break;
+            }
+
         } else{
             ?>
             <html><body><script> var chyba = document.getElementById("error-message");

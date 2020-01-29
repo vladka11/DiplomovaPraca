@@ -1,5 +1,5 @@
 <?php
-$logged_id = $_SESSION["logged_id"];
+$logged_id = $_SESSION["userid"];
 $query = "SELECT * FROM Predmet JOIN Vyucuje USING (id_predmetu) WHERE id_ucitela = '$logged_id '";
 $db = new database();
 $db->pripoj();

@@ -91,7 +91,7 @@ if ($numrows != 0) {
                     }
                     document.getElementById("data").innerHTML += html;
                 } else {
-                    document.getElementById("noData").innerHTML = "K vybranej téme nie su pridenené žiadne otázky. <br>";
+                    document.getElementById("noData").innerHTML = "K vybranej téme nie su pridelené žiadne otázky. <br>";
                     document.getElementById("noData").innerHTML += "Pridajte otázku pomocou tlačidla +.";
                     document.getElementById("noData").style.paddingBottom = "20px";
                 }

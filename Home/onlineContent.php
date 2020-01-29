@@ -1,6 +1,9 @@
 <?php
 include("onlineNavigationBar.php");
-
+if (session_id() == '') {
+    session_start();
+}
+$logged_id = $_SESSION["userid"];
 
 $predmetAtema = (explode("x", $_COOKIE["predmetTema"]));
 if ($predmetAtema == " ") {
@@ -23,8 +26,7 @@ if ($numrows != 0) {
 <html>
 <head>
 <body>
-<div id="content"
-">
+<div id="content"">
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <button type="button" id="sidebarCollapse" class="navbar-btn">
         <span></span>
@@ -83,13 +85,16 @@ if ($numrows != 0) {
             <span class="slider round"></span>
         </label>
     </div>
-    <button id="startQuestions" class="button btn btn-default" type="button" onclick="showQuestions()">Spusti</button>
+    <button id="startQuestions" class="button btn btn-default" type="submit" onclick="showQuestions()">Spusti</button>
 </div>
-<input type="hidden" id="rowCount">
-<script type="text/javascript" src="spustiOtazky.js?version2"></script>
+<!-- Hidden element with created test id-->
+<input type="hidden" id="new_test_id">
+<script type="text/javascript" src="spustiOtazky.js?version3"></script>
 
 
 <script>
+
+    //Show question data with hidden icons for actions
     $(document).ready(function () {
         var data= '<?php echo $id_predmetu;?>';
     $.ajax({
@@ -110,14 +115,14 @@ if ($numrows != 0) {
 
                     html += "<tr>"
                     html += "<td class='text'>" + text + "</td>";
-                    html += "<td align='center'> " + "<h3 class='start'><span style='display:none' onclick='spustiOtazku(this.id)' class='glyphicon glyphicon-play-circle' id='P " + id_otazky + "'></span></h3>" + "</td>";
-                    html += "<td align='center'>" + "<h3 class='stop'><span style='color:gray;display:none' onclick='ukonciOtazku(this.id)' class='glyphicon glyphicon-stop' id='S " + id_otazky + "'></h3>" + "</td>";
-                    html += "<td align='center'>" + "<h3 class='actualAnswers'><span style='color:gray;display:none' onclick='zobrazVysledky(this.id)' class='glyphicon glyphicon-list-alt' id='A " + id_otazky + "'></h3>" + "</td>";
+                    html += "<td align='center'> " + "<h3 class='start'><span style='display:none' onclick='startQuestion(this.id)' class='glyphicon glyphicon-play-circle' id='P " + id_otazky + "'></span></h3>" + "</td>";
+                    html += "<td align='center'>" + "<h3 class='stop'><span style='color:gray;display:none' onclick='stopQuestion(this.id)' class='glyphicon glyphicon-stop' id='S " + id_otazky + "'></h3>" + "</td>";
+                    html += "<td align='center'>" + "<h3 class='actualAnswers'><span style='color:gray;display:none' onclick='showResults(this.id)' class='glyphicon glyphicon-list-alt' id='A " + id_otazky + "'></h3>" + "</td>";
                     html += "</tr>";
                 }
                 document.getElementById("data").innerHTML += html;
             } else {
-                document.getElementById("noData").innerHTML = "K vybranej téme nie su pridenené žiadne otázky. <br>";
+                document.getElementById("noData").innerHTML = "K vybranej téme nie su pridelené žiadne otázky. <br>";
                 document.getElementById("noData").innerHTML += "Otázky je možné pridať v offline režime.";
                 document.getElementById("noData").style.paddingBottom = "20px";
             }
@@ -165,31 +170,18 @@ if ($numrows != 0) {
 
     });
 
-    function spustiOtazku(xxx) {
-        console.log("Spustam otazku c. " + xxx);
-
-        //Zafarbenie start buttonu na šedo
-        document.getElementById(xxx).style.color = "gray";
-
-        //Ziskanie id otazky
-        id = xxx.split(" ");
-        fullId1= "S ".concat(id[1]);
-        fullId2= "A ".concat(id[1]);
-        //prefarbenie buttonov ukonču a vysledky na aktívnu zelenu
-        document.getElementById(fullId1).style.color = "#0A7E8F";
-        document.getElementById(fullId2).style.color = "#0A7E8F";
-
-    }
-
-    function ukonciOtazku(xxx) {
-        console.log("Ukoncujem otazku c. " + xxx);
-        document.getElementById(xxx).style.color = "gray";
-
-    }
-
-    function zobrazVysledky(xxx) {
-        console.log("Zobrazujem vysledky k otazke c. " + xxx);
-    }
+    //create new test in database
+    $(document).on('click', '#startQuestions', function () {
+        $.ajax({
+            type: 'POST',
+            url: 'createNewTest.php',
+            data: 'createTest=' + "new test",
+            success: function (data) {
+                 //save test id in hidden element
+                 document.getElementById('new_test_id').value=data;
+                }
+        });
+    });
 
 </script>
 </body>
