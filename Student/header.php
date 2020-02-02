@@ -8,7 +8,7 @@ $user_id = $_SESSION["userid"];
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="studentDesign.css?version=11">
+    <link rel="stylesheet" type="text/css" href="studentDesign.css?version=17">
 
 </head>
 <body>
@@ -30,12 +30,6 @@ $user_id = $_SESSION["userid"];
         </div>
     </div>
 </nav>
-    <div class="row" id="enter_id_box">
-                <div class="col-xs-12" id="ented_id_text">
-                    <div class="col-xs-6 col-md-6"><input type="text" class="form-control" id="inputID" placeholder="Zadaj id prednášky"></div>
-                    <div class="col-xs-6 col-md-6"><button type="submit" class="button">Potvrd</button></div>
-                </div>
-        </div>
 </body>
 
 <script>
@@ -49,10 +43,7 @@ $user_id = $_SESSION["userid"];
                     document.getElementById("user_name").innerHTML= data.meno + " " + data.priezvisko;
                     document.getElementById("specialization").innerHTML= data.nazov_odboru;
                     document.getElementById("group").innerHTML= data.kruzok;
-
                 }
-
             });
         })
-
 </script>

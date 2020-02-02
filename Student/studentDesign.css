@@ -33,7 +33,7 @@ hr{
 
 /* HEADER */
 .button{
-    background-color: #1B858B;
+    background-color: #3B6884;
     border:none;
     width: 100px;
     color: white;
@@ -89,7 +89,7 @@ span{
 #enter_id_box{
     padding-left: 10%;
     background-color: #2BA7AF;
-    box-shadow: grey;
+        box-shadow: grey;
     height: 55px;
     font-family: "Skia";
     text-align: center;
@@ -140,16 +140,29 @@ li:before {
 }
 
 /* List of question */
-
 #topic_header{
     margin: 5px 0px 3px 0px;
 }
 
 .list-group-item{
+    height: 45px;
     border-radius: 50px;
     margin-bottom: 10px;
     margin-top: 5px;
     background-color: #DADBDD;
+}
+.list-group-answer,.list-group-letter {
+    height: 40px;
+    border: 1px solid #3B6884;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    text-align: left;
+}
+.list-group-letter{
+   background-color: #3B6884;
+    color: white;
+    position: relative;
+    align-content: center;
 }
 
 .question_container{
@@ -173,6 +186,91 @@ li:before {
     font-family: "Lucida Grande";
 }
 
+
+/* List of tests in specific topic */
+#all_subject_tests{
+    padding-top: 7%;
+}
+
+.testScore{
+    padding-bottom: 3%;
+    font-family: "Lucida Grande";
+}
+
+.testScore h5 {
+    padding: 2px;
+    margin: 0px;
+}
+
+.testScore .topic{
+    color: #3B6884;
+}
+
+
+/* CHECKBOXES Customize the label (the container) */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 60px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    height: 32px;
+    font-weight: 400;
+    font-size: 19px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid #3B6884;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    margin-left: 30%;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 30px;
+    width: 50px;
+    background-color: #3B6884;
+}
+.container input:checked ~ .checkmark {
+    background-color: #3B6884;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    zoom: 1.4;
+    margin-left: 5px;
+}
+
+/* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 @media (max-width: 768px) {
 
 #header_text{

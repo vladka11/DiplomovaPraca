@@ -45,18 +45,24 @@ $db->pripoj();
     });
     
     function calculatePercentage(score, max_score) {
-        alert(score + "/" + max_score)
         return Math.round((score/max_score)*100) + "%";
     }
 
     function showSubjectScore(subject_Name, score){
         var html = "";
-        html += "<h6>"+ subject_Name +"</h6>";
+        html += "<div id='"+ subject_Name + ":" + score +"' class='subjects' onclick='showTests(this.id)'>";
+        html += "<h5>"+ subject_Name +"</h5>";
         html += "<div class='progress'>";
         html += "<div class='progress-bar' role='progressbar' aria-valuenow='70' aria-valuemin='0' aria-valuemax='100' style='width:"+ score  +"'>" + score + "</div>";
+        html += "<div>";
+        html += "<div>";
         html += "</tr>";
         document.getElementById("data").innerHTML += html;
     }
 
+   function showTests(subjectName_score){
+            document.cookie = "subjectName_score= " + subjectName_score;
+            window.location.replace("http://localhost:8080/DiplomovaPraca/Student/allTestsList.php");
+    }
 
 </script>

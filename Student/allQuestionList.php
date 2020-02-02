@@ -37,7 +37,6 @@ $id_predmetu = (int)$predmetAtema[1];
                 }
             });
 
-
             $.ajax({
                 url: "http://localhost:8080/DiplomovaPraca/Home/questionData.php",
                 data: {
@@ -50,10 +49,14 @@ $id_predmetu = (int)$predmetAtema[1];
                         var data = JSON.parse(responseText);
                         var html = "";
                         for (var a = 0; a < data.length; a++) {
-                            var text = data[a].text_otazky;
+                            //var text =  (data[a].text_otazky);
+                            var text =  (data[a].text_otazky.replace(/^(.{40}[^\s]*).*/, "$1") + " \n");
+                            if ((data[a].text_otazky).length > 40){
+                                text += "...";
+                            }
                             var id_otazky = data[a].id_otazky;
 
-                            html += "<tr>"
+                            html += "<tr>";
                             html += "<p class='list-group-item'>" + text + "</p>";
                             html += "</tr>";
                         }

@@ -1,5 +1,6 @@
 <?php
 include "./header.php";
+include "./headerTestBox.php";
 ?>
 <div id="content">
     <div id="box_items" style="padding-left:15%; padding-top: 8%">
