@@ -1,5 +1,6 @@
 <?php
 $onlineQuestionId = $_COOKIE["onlineQuestionId"];
+$testId =  $_COOKIE["inputID"];
 include "header.php";
 ?>
 <html>
@@ -21,14 +22,18 @@ include "header.php";
     <div class="list-group-answers" id="data">
         <div id="noData"></div>
     </div>
-    <p id="demo"></p>
-    <button class="button" id="save_button" style="margin-top:10px; margin-left: 110px">Ulož</button>
+    <div id="errorMessage" class="text-danger"> </div>
+    <button class="button" id="save_button"  onclick="saveAnwers()" style="margin-top:10px; margin-left: 110px">Ulož</button>
 </div>
 </div>
+<div id="divCounter"></div>
 
 <script>
-    $(document).ready(function () {
+
+    //Display answers of the opened question and checkboxes
     var questionID = '<?php echo $onlineQuestionId; ?>';
+    var testID = '<?php echo $testId; ?>';
+    $(document).ready(function () {
         $.ajax({
             url: "fetchTestData.php",
             data: {"onlineQuestionId": questionID,
@@ -42,12 +47,9 @@ include "header.php";
                 document.getElementById('question_text').innerHTML  = data[0].text_otazky;
                 for (var a = 0; a < data.length; a++) {
                     var text = data[a].text_odpovede;
-                   // html += "<div class= 'col-xs-12 question_line'>";
-                    //html += "<div class= 'col-xs-2 col-md-3 list-group-letter'>" + "<h5 type='text'>" + "A" + "</h5></div>";
-                    //tml += "<div class= 'col-xs-10 col-md-9 list-group-answer'>" + "<h5 type='text'>" + text + "</h5></div>";
-                    //html += "</div>";
+                    var id = data[a].id_odpovede;
                     html += "<label class='container'>" + text;
-                    html += "<input type='checkbox'>";
+                    html += "<input type='checkbox' name='checkboxes' id='" +  id + "'>";
                     html += "<span class='checkmark'></span>";
                     html += "</label>";
                 }
@@ -55,19 +57,29 @@ include "header.php";
               }
         });
     });
-
-    var timeleft = 11   ;
-    var downloadTimer = setInterval(function(){
-        timeleft--;
-        document.getElementById("demo").textContent = timeleft;
-        if(timeleft <= 0){
-            clearInterval(downloadTimer);
-            // TODO Close question in database to avoid page refresh
-            document.getElementById('save_button').disabled = true;
-            document.getElementById('save_button').style.backgroundColor='#D3D3D3';
-            alert("Čas vypršal!");
+    // Save answers after user tap save button and chose some answers
+    function saveAnwers() {
+        var answers = [];
+        $("input:checkbox").each(function(){
+            var $this = $(this);
+            if($this.is(":checked")){
+                answers.push($this.attr("id"));
+         }
+        });
+        var jsonString = JSON.stringify(answers);
+        if(answers.length > 0){
+            $.ajax({
+                url: "saveAnswer.php",
+                data: {"questionID": questionID, "testID":testID, "timeout":false, "answers": jsonString, },
+                type: "POST",
+                success: function () {
+                    window.location = "onlineTestQuestions.php";
+                }
+            });
+        } else {
+            document.getElementById("errorMessage").innerHTML= "Nebola zvolená žiadna možnosť";
         }
-    },1000);
+    }
     </script>
 </body>
 </html>
