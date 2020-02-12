@@ -40,7 +40,7 @@ $db->pripoj();
 
         <ul class="list-unstyled components">
             <?php
-            $logged_id = $_SESSION["logged_id"];
+            $logged_id =$_SESSION["userid"];
             $udajeZDb = $db->posliPoziadavku("SELECT nazov_predmetu, id_predmetu FROM Predmet JOIN Vyucuje USING (id_predmetu) WHERE id_ucitela = '$logged_id' ORDER BY nazov_predmetu");
             $numrows = mysqli_num_rows($udajeZDb);
             if ($numrows != 0) {

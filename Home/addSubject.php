@@ -3,7 +3,7 @@
 if(session_id() == '') {
     session_start();
 }
-$logged_id = $_SESSION["logged_id"];
+$logged_id = $_SESSION["userid"];
 $subjectName = $_POST["subject"];
 $year = $_POST["year"];
 

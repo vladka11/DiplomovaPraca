@@ -4,7 +4,7 @@ function showQuestions(){
     document.getElementById("startQuestions").innerHTML="Ukonči";
 
 
-    //zobrazenie ikoniek na spustenie/zastavenie otazky a zobrazenie vysledokv
+    // Show icons for start/stop and answers
     elements = document.getElementsByClassName("start");
     for (var i = 0; i < elements.length; i++) {
         elements[i].firstChild.style.display='block';
@@ -23,37 +23,46 @@ function showQuestions(){
 }
 
 function startQuestion(xxx) {
-    console.log("Spustam otazku c. " + xxx);
-
-    //Zafarbenie start buttonu na šedo
+    // Color start button to gray
     document.getElementById(xxx).style.color = "gray";
+    document.getElementById(xxx).disabled = true;
 
-    //Ziskanie id otazky
+
+    // Get question id
     id = xxx.split(" ");
     fullId1= "S ".concat(id[1]);
     fullId2= "A ".concat(id[1]);
     clicked_question_id = id[1];
-    //prefarbenie buttonov ukonču a vysledky na aktívnu zelenu
+    // Color other to button to green
     document.getElementById(fullId1).style.color = "#0A7E8F";
     document.getElementById(fullId2).style.color = "#0A7E8F";
 
-    //Pridanie otázky k testu
+    // Add selected question to test in database
     var test_id = document.getElementById('new_test_id').value;
     $.ajax({
         type: 'POST',
         url: 'createNewTest.php',
         data: 'test_id=' + test_id + '&clicked_question_id= ' + clicked_question_id,
         success: function (data) {
-            alert("Otázka bola úspešne pridaná");
+            alert("Otázka bola úspešne spustená");
         }
     });
 
 }
 
 function stopQuestion(xxx) {
-    console.log("Ukoncujem otazku c. " + xxx);
     document.getElementById(xxx).style.color = "gray";
-
+    let id = xxx.split(" ");
+    let clicked_question = id[1];
+    var test_id = document.getElementById('new_test_id').value;
+    $.ajax({
+        type: 'POST',
+        url: 'stopNewTest.php',
+        data: 'test_id=' + test_id + '&clicked_question_id= ' + clicked_question,
+        success: function (data) {
+            alert("Otázka bola úspešne ukončená");
+        }
+    });
 }
 
 function showResults(xxx) {

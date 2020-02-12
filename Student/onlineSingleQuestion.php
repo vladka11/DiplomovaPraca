@@ -29,7 +29,6 @@ include "header.php";
 <div id="divCounter"></div>
 
 <script>
-
     //Display answers of the opened question and checkboxes
     var questionID = '<?php echo $onlineQuestionId; ?>';
     var testID = '<?php echo $testId; ?>';
@@ -70,12 +69,15 @@ include "header.php";
         if(answers.length > 0){
             $.ajax({
                 url: "saveAnswer.php",
-                data: {"questionID": questionID, "testID":testID, "timeout":false, "answers": jsonString, },
+                data: {"questionID": questionID, "testID":testID, "answers": jsonString, },
                 type: "POST",
-                success: function () {
+                success: function (score) {
+                    alert(score);
+                        alert("Otázka už bola medzičasom uzavretá a nie je možné na nu odpovedať");
+                    }
                     window.location = "onlineTestQuestions.php";
                 }
-            });
+            }
         } else {
             document.getElementById("errorMessage").innerHTML= "Nebola zvolená žiadna možnosť";
         }

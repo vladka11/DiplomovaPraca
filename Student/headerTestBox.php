@@ -9,8 +9,16 @@
     // TODO Check if test id exists, if not, display alert
     function openTest() {
         var inputID = document.getElementById('inputID').value;
-        document.cookie = "inputID= " + inputID;
-        window.location.replace("http://localhost:8080/DiplomovaPraca/Student/onlineTestQuestions.php");
+        $.ajax({
+            url: "fetchTestData.php",
+            data: {"presentStudent": inputID, },
+            type: "POST",
+            success: function () {
+                document.cookie = "inputID= " + inputID;
+                window.location = "onlineTestQuestions.php";
+            }
+        });
+        // document.cookie = "inputID= " + inputID;
+        // window.location.replace("http://localhost:8080/DiplomovaPraca/Student/onlineTestQuestions.php");
     }
-
 </script>

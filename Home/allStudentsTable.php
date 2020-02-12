@@ -3,7 +3,7 @@ if (session_id() == '') {
     session_start();
 }
 $headerTitle = "Zobrazenie všetkých študentov";
-$logged_id = $_SESSION["logged_id"];
+$logged_id = $_SESSION["userid"];
 include("./offlineNavigationBar.php");
 include("./header.php");
 

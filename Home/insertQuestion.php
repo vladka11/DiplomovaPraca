@@ -6,7 +6,7 @@ $db->pripoj();
 if (session_id() == '') {
     session_start();
 }
-$logged_id = $_SESSION["logged_id"];
+$logged_id = $_SESSION["userid"];
 
 if(!empty($_POST))
 {

@@ -27,10 +27,11 @@ $id_testu = $_COOKIE["inputID"];
                 },
                 type: "POST",
                 success: function (response) {
-                    var html = "";
+                    if(response!=="null"){
+                   var html = "";
                     var data = JSON.parse(response);
-                    document.getElementById('subject_name').innerHTML += "   " + data[1].nazov_predmetu;
-                    document.getElementById('topic_name').innerHTML = data[1].nazov_temy;
+                    document.getElementById('subject_name').innerHTML += "   " + data[0].nazov_predmetu;
+                    document.getElementById('topic_name').innerHTML = data[0].nazov_temy;
 
                     for (var a = 0; a < data.length; a++) {
                         var text = (data[a].text_otazky.replace(/^(.{40}[^\s]*).*/, "$1") + " \n");
@@ -48,11 +49,15 @@ $id_testu = $_COOKIE["inputID"];
                         }
                     }
                     document.getElementById("data").innerHTML += html;
+                } else {
+                        document.getElementById("topic_name").innerHTML = "Otázky v teste ešte neboli spustené. Prosím počkajte na pokyn vyučujúceho.";
+                    }
                 }
             });
         });
 
         function showOnlineQuestion(id) {
+            //Check if question has not been already answered before
             $.ajax({
                 url: "fetchTestData.php",
                 data: {"checkedtestID": data, "checkedQuestionID": id,},
@@ -66,5 +71,6 @@ $id_testu = $_COOKIE["inputID"];
                     }
                 }
             });
+
         }
     </script>

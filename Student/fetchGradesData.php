@@ -12,7 +12,8 @@ $result = $db->posliPoziadavku( "SELECT id_predmetu, nazov_predmetu, id_testu, d
                                             JOIN Test USING (id_testu)
                                             JOIN Pritomny_student USING (id_testu)
                                             WHERE id_studenta = '$student_id'
-                                            GROUP BY id_testu");
+                                            GROUP BY id_testu
+                                            ORDER BY id_predmetu");
 while ($row = $result->fetch_assoc()) {
     $rows[] = $row;
 }

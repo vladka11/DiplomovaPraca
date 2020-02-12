@@ -56,10 +56,12 @@ if ($numrows != 0) {
         </tbody>
     </table>
 
+
     <h3><span class="glyphicon glyphicon-play-circle"></span> Spustenie testu</h3>
+    <h4 align="center" type="hidden" id="test_idd">
     <hr>
     <div class="timer" id="timer">
-        <div class="text">
+        <div class="text">v
             <p class="text">Čas na zodpovedanie otázky</p>
         </div>
         <div class="rangeall">
@@ -86,10 +88,10 @@ if ($numrows != 0) {
         </label>
     </div>
     <button id="startQuestions" class="button btn btn-default" type="submit" onclick="showQuestions()">Spusti</button>
-</div>
+</h4>
 <!-- Hidden element with created test id-->
 <input type="hidden" id="new_test_id">
-<script type="text/javascript" src="spustiOtazky.js?version3"></script>
+<script type="text/javascript" src="spustiOtazky.js?version8"></script>
 
 
 <script>
@@ -157,7 +159,7 @@ if ($numrows != 0) {
             style += '.range input::-' + prefs[i] + '{background: linear-gradient(to right, #37adbf 0%, #37adbf ' + val + '%, #b2b2b2 ' + val + '%, #b2b2b2 100%)}';
         }
         return style;
-    }
+    };
 
     $rangeInput.on('input', function () {
         sheet.textContent = getTrackStyle(this);
@@ -171,15 +173,21 @@ if ($numrows != 0) {
     });
 
     //create new test in database
+    var topicId= '<?php echo $id_predmetu;?>';
     $(document).on('click', '#startQuestions', function () {
         $.ajax({
             type: 'POST',
             url: 'createNewTest.php',
-            data: 'createTest=' + "new test",
+            data: {
+            "topicId": topicId,
+            },
             success: function (data) {
                  //save test id in hidden element
-                 document.getElementById('new_test_id').value=data;
-                }
+                document.getElementById('new_test_id').value=data;
+                document.getElementById('test_idd').innerHTML="ID vytvoreného testu:" + data;
+                document.getElementById('test_idd').style.display = "block";
+
+            }
         });
     });
 

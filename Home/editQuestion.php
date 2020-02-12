@@ -7,7 +7,7 @@ $db = new database();
 $db->pripoj();
 
 //Získanie údajov z formulára
-$logged_id = $_SESSION["logged_id"];
+$logged_id = $_SESSION["userid"];
 $topic_id = $_POST["topic"];
 $question = $_POST["question"];
 $answers = json_decode(stripslashes($_POST['answers']));

@@ -16,7 +16,7 @@ $subject_total_score = $subjectName_score[1];
 </head>
 <body>
 <nav class="navbar">
-    <div class="header">
+    <div class="header" onclick="goToHomepage()">
         <div id="header_text">
             <h1 style="padding-left: 30%"><?php echo $subject_total_score ?></h1>
             <div></div>
@@ -58,7 +58,9 @@ $subject_total_score = $subjectName_score[1];
             }
         });
     });
-
+    function goToHomepage() {
+        window.location = "homepage.php";
+    }
 
 </script>
 </body>

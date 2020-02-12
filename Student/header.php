@@ -13,7 +13,7 @@ $user_id = $_SESSION["userid"];
 </head>
 <body>
 <nav class="navbar">
-    <div class="header">
+    <div class="header" onclick="goToHomepage()">
         <div class="row">
             <div class="col-xs-12 col-md-12">
                 <h1 id="user_icon"><span class="glyphicon glyphicon-user"></span></h1>
@@ -45,5 +45,8 @@ $user_id = $_SESSION["userid"];
                     document.getElementById("group").innerHTML= data.kruzok;
                 }
             });
-        })
+        });
+    function goToHomepage() {
+        window.location = "homepage.php";
+    }
 </script>
