@@ -73,7 +73,7 @@ if(isset($_POST['checkedQuestionID'])){
     echo json_encode($row);
 
 }
-// Connect student with actual online tests
+// Connect student with actual online tests,
 if(isset($_POST['presentStudent'])){
     $testID = $_POST['presentStudent'];
     $results = $db->posliPoziadavku("INSERT INTO Pritomny_student (id_testu, id_studenta, pocet_bodov, uspesnost)
@@ -81,6 +81,12 @@ if(isset($_POST['presentStudent'])){
     $row = mysqli_fetch_row($results);
     echo json_encode($row);
 
+ // Add subject to students list if it is not already
+    $subject = $db->posliPoziadavku("SELECT id_predmetu, nazov_predmetu FROM Predmet JOIN Tema USING(id_predmetu) JOIN Otazka USING (id_temy) JOIN Otazka_na_teste USING (id_otazky) WHERE id_testu = '$testID'  GROUP BY id_predmetu");
+    $data = mysqli_fetch_object($subject);
+    $subjectID = $data->id_predmetu;
+
+    $db->posliPoziadavku("INSERT INTO Studuje VALUES ('$user_id', '$subjectID', 2020, 0)");
 }
 
 

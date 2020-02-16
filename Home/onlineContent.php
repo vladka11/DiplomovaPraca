@@ -91,7 +91,7 @@ if ($numrows != 0) {
 </h4>
 <!-- Hidden element with created test id-->
 <input type="hidden" id="new_test_id">
-<script type="text/javascript" src="spustiOtazky.js?version8"></script>
+<script type="text/javascript" src="spustiOtazky.js?version11"></script>
 
 
 <script>

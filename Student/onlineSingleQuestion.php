@@ -73,15 +73,17 @@ include "header.php";
                 type: "POST",
                 success: function (score) {
                     alert(score);
+                    if(score === "-999"){
                         alert("Otázka už bola medzičasom uzavretá a nie je možné na nu odpovedať");
                     }
-                    window.location = "onlineTestQuestions.php";
-                }
-            }
+                        window.location = "onlineTestQuestions.php";
+                    }
+                });
         } else {
             document.getElementById("errorMessage").innerHTML= "Nebola zvolená žiadna možnosť";
         }
-    }
-    </script>
+        }
+
+</script>
 </body>
 </html>

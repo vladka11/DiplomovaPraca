@@ -66,5 +66,10 @@ function stopQuestion(xxx) {
 }
 
 function showResults(xxx) {
-    console.log("Zobrazujem vysledky k otazke c. " + xxx);
+    let id = xxx.split(" ");
+    let questionID = id[1];
+    var test_id = document.getElementById('new_test_id').value;
+    document.cookie = "resultID= " + questionID;
+    document.cookie = "testID= " + test_id;
+    window.location = 'showTestResults.php';
 }
