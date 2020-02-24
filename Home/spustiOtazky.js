@@ -1,6 +1,6 @@
 function showQuestions(){
-    document.getElementById("timer").style.display = 'none';
-    document.getElementById("answers").style.display = 'none';
+    //document.getElementById("timer").style.display = 'none';
+    //document.getElementById("answers").style.display = 'none';
     document.getElementById("startQuestions").innerHTML="Ukonči";
 
 
@@ -19,7 +19,6 @@ function showQuestions(){
     for (var i = 0; i < elements3.length; i++) {
         elements3[i].firstChild.style.display='block';
     }
-
 }
 
 function startQuestion(xxx) {
@@ -71,5 +70,6 @@ function showResults(xxx) {
     var test_id = document.getElementById('new_test_id').value;
     document.cookie = "resultID= " + questionID;
     document.cookie = "testID= " + test_id;
-    window.location = 'showTestResults.php';
+    window.open("http://localhost:8080/DiplomovaPraca/Home/showTestResults.php");
+
 }

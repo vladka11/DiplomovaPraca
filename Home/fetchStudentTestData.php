@@ -24,6 +24,5 @@ if(isset($_POST["student_id"]))
     }
 
 }
-
 ?>
-<?php
+

@@ -32,6 +32,9 @@ if (isset($_POST['testID']) and (isset($_POST['questionID']))) {
                     $totalScore += $scoree;
                 }
                 // Insert selected answer into database
+               // if($scoree < 0){
+                 //   $scoree=0;
+                //}
                 $insertQuery = $db->posliPoziadavku("INSERT INTO Oznacena_odpoved VALUES ('$testID', '$questionID', '$logged_id','$testID','$my_array_data[$i]','$scoree')");
                 // $insertQuery = $db->posliPoziadavku("INSERT INTO Oznacena_odpoved VALUES ('47', '2', '1','47 ','8','0')");
             } else {
@@ -39,12 +42,12 @@ if (isset($_POST['testID']) and (isset($_POST['questionID']))) {
                 $totalScore = -999;
             }
         }
+    }
 
         // If student has more than 0 points for question
         if ($totalScore > 0) {
-            $updateQuery = $db->posliPoziadavku("UPDATE Pritomny_student SET pocet_bodov = pocet_bodov + '$totalScore' WHERE id_testu = '$testID' AND id_studenta = '$logged_id'");
+            $updateQuery = $db->posliPoziadavku("UPDATE Pritomny_student SET pocet_bodov =  pocet_bodov + '$totalScore' WHERE id_testu = '$testID' AND id_studenta = '$logged_id'");
         }
-    }
 }
 echo $totalScore;
 // Premennu stav pridavam kvoli tomu, že by študent nestihol odpovedať na otazku, treba kontrolovať či už študent odpovedal na otazku, kontrola podľa "id_odpoved",
