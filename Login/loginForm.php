@@ -67,7 +67,7 @@
                     <img src="logoof.png" alt="University of Economics logo"  width="50%" height="50%">
                     <div class="row" >
                         <div class="col-sm-6">Developed by: Vladislava Kopálová </div>
-                        <div class="col-sm-6">Led by: Ing. Jaroslav Kultan, PhD.</div>
+                        <div class="col-sm-6">Led by: Ing. Jaroslav Kultan, PhD.    Ing. Anna Ondrejková ,PhD.</div>
                     </div>
 
                      </div>
